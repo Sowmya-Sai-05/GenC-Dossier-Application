@@ -1,0 +1,85 @@
+2026-07-14 11:07:34.529 [main] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 18304 (C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork\target\classes started by 2507337 in C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork)
+2026-07-14 11:07:34.531 [main] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-14 11:07:34.533 [main] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-14 11:10:51.170 [main] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 32276 (C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork\target\classes started by 2507337 in C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork)
+2026-07-14 11:10:51.183 [main] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-14 11:10:51.185 [main] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-14 11:12:14.939 [main] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 7244 (C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork\target\classes started by 2507337 in C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork)
+2026-07-14 11:12:14.940 [main] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-14 11:12:14.942 [main] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-14 11:12:24.628 [main] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-14 11:12:28.097 [main] INFO  com.cts.Demo1Application - Started Demo1Application in 13.887 seconds (process running for 15.728)
+2026-07-14 11:14:32.940 [http-nio-8086-exec-4] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-14 11:14:33.058 [http-nio-8086-exec-4] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-14 11:14:42.394 [http-nio-8086-exec-4] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-14 11:14:42.409 [http-nio-8086-exec-4] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-14 11:14:45.026 [http-nio-8086-exec-5] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-14 11:14:45.042 [http-nio-8086-exec-5] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-14 11:40:52.424 [http-nio-8086-exec-10] INFO  com.cts.controller.AdminController - Received Excel upload request with file: Sample1.xlsx, size: 18523 bytes
+2026-07-14 11:40:58.576 [http-nio-8086-exec-10] INFO  com.cts.controller.AdminController - Excel file processed successfully. Total: 5, Saved: 5, Updated: 0, Rejected: 0
+2026-07-14 11:41:10.942 [http-nio-8086-exec-1] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-14 11:41:11.270 [http-nio-8086-exec-1] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-14 11:41:33.563 [http-nio-8086-exec-5] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 455280
+2026-07-14 11:41:33.592 [http-nio-8086-exec-5] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 455280
+2026-07-14 11:41:33.620 [http-nio-8086-exec-7] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 455280
+2026-07-14 11:41:33.633 [http-nio-8086-exec-7] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 455280
+2026-07-14 11:41:33.657 [http-nio-8086-exec-8] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 455280
+2026-07-14 11:41:33.672 [http-nio-8086-exec-8] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 455280
+2026-07-14 11:41:33.691 [http-nio-8086-exec-10] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 455280
+2026-07-14 11:41:33.706 [http-nio-8086-exec-10] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 455280
+2026-07-14 11:42:02.239 [http-nio-8086-exec-2] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 455280
+2026-07-14 11:42:02.264 [http-nio-8086-exec-2] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 455280
+2026-07-14 11:42:02.288 [http-nio-8086-exec-4] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 455280
+2026-07-14 11:42:02.301 [http-nio-8086-exec-4] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 455280
+2026-07-14 13:19:41.637 [main] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 4940 (C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork\target\classes started by 2507337 in C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork)
+2026-07-14 13:19:41.641 [main] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-14 13:19:41.647 [main] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-14 13:19:57.954 [main] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-14 13:20:13.913 [http-nio-8086-exec-8] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-14 13:20:14.237 [http-nio-8086-exec-8] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-14 13:43:55.486 [http-nio-8086-exec-9] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Learning Catalogue
+2026-07-14 13:43:55.502 [http-nio-8086-exec-9] INFO  com.cts.service.AIFluencyService - Starting AI Catalogue upload process
+2026-07-14 13:43:56.068 [http-nio-8086-exec-9] INFO  com.cts.service.AIFluencyService - Catalogue upload completed. Saved: 5, Rejected: 0
+2026-07-14 13:54:23.750 [http-nio-8086-exec-2] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Learning Catalogue
+2026-07-14 13:54:23.752 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - Starting AI Catalogue upload process
+2026-07-14 13:54:23.929 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - Catalogue upload completed. Saved: 5, Rejected: 0
+2026-07-14 13:56:36.107 [http-nio-8086-exec-6] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Learning Catalogue
+2026-07-14 13:56:36.107 [http-nio-8086-exec-6] INFO  com.cts.service.AIFluencyService - Starting AI Catalogue upload process
+2026-07-14 13:56:36.274 [http-nio-8086-exec-6] INFO  com.cts.service.AIFluencyService - Catalogue upload completed. Saved: 5, Rejected: 0
+2026-07-14 13:58:28.432 [http-nio-8086-exec-2] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Learning Catalogue
+2026-07-14 13:58:28.433 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - Starting AI Catalogue upload process
+2026-07-14 13:58:28.596 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - Catalogue upload completed. Saved: 5, Rejected: 0
+2026-07-14 14:08:38.051 [http-nio-8086-exec-2] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-14 14:08:38.148 [http-nio-8086-exec-2] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-14 14:12:37.319 [http-nio-8086-exec-4] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Learning Catalogue
+2026-07-14 14:12:37.321 [http-nio-8086-exec-4] INFO  com.cts.service.AIFluencyService - Starting AI Catalogue upload process
+2026-07-14 14:12:37.426 [http-nio-8086-exec-4] INFO  com.cts.service.AIFluencyService - Catalogue upload completed. Saved: 5, Rejected: 0
+2026-07-14 14:12:49.271 [http-nio-8086-exec-6] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Learning Catalogue
+2026-07-14 14:12:49.272 [http-nio-8086-exec-6] INFO  com.cts.service.AIFluencyService - Starting AI Catalogue upload process
+2026-07-14 14:12:49.368 [http-nio-8086-exec-6] INFO  com.cts.service.AIFluencyService - Catalogue upload completed. Saved: 5, Rejected: 0
+2026-07-14 14:12:50.847 [http-nio-8086-exec-9] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Learning Catalogue
+2026-07-14 14:12:50.848 [http-nio-8086-exec-9] INFO  com.cts.service.AIFluencyService - Starting AI Catalogue upload process
+2026-07-14 14:12:50.944 [http-nio-8086-exec-9] INFO  com.cts.service.AIFluencyService - Catalogue upload completed. Saved: 5, Rejected: 0
+2026-07-14 14:12:52.055 [http-nio-8086-exec-1] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Learning Catalogue
+2026-07-14 14:12:52.055 [http-nio-8086-exec-1] INFO  com.cts.service.AIFluencyService - Starting AI Catalogue upload process
+2026-07-14 14:12:52.137 [http-nio-8086-exec-1] INFO  com.cts.service.AIFluencyService - Catalogue upload completed. Saved: 5, Rejected: 0
+2026-07-14 14:12:53.286 [http-nio-8086-exec-2] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Learning Catalogue
+2026-07-14 14:12:53.286 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - Starting AI Catalogue upload process
+2026-07-14 14:12:53.372 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - Catalogue upload completed. Saved: 5, Rejected: 0
+2026-07-14 14:13:24.872 [http-nio-8086-exec-4] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Learning Catalogue
+2026-07-14 14:13:24.873 [http-nio-8086-exec-4] INFO  com.cts.service.AIFluencyService - Starting AI Catalogue upload process
+2026-07-14 14:13:24.949 [http-nio-8086-exec-4] INFO  com.cts.service.AIFluencyService - Catalogue upload completed. Saved: 5, Rejected: 0
+2026-07-14 14:25:49.880 [http-nio-8086-exec-6] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-14 14:25:49.946 [http-nio-8086-exec-6] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-14 14:26:17.752 [http-nio-8086-exec-7] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Learning Catalogue
+2026-07-14 14:26:17.752 [http-nio-8086-exec-7] INFO  com.cts.service.AIFluencyService - Starting AI Catalogue upload process
+2026-07-14 14:26:17.864 [http-nio-8086-exec-7] INFO  com.cts.service.AIFluencyService - Catalogue upload completed. Saved: 5, Rejected: 0
+2026-07-14 14:28:10.963 [http-nio-8086-exec-6] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-14 14:28:11.027 [http-nio-8086-exec-6] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-14 14:34:10.036 [main] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 29452 (C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork\target\classes started by 2507337 in C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork)
+2026-07-14 14:34:10.037 [main] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-14 14:34:10.038 [main] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-14 14:34:14.036 [main] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-14 14:34:15.025 [main] INFO  com.cts.Demo1Application - Started Demo1Application in 5.297 seconds (process running for 6.132)
+2026-07-14 14:45:19.469 [http-nio-8086-exec-1] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-14 14:45:19.797 [http-nio-8086-exec-1] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates

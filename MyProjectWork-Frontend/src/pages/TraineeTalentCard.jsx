@@ -1,0 +1,37 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getAssociateById } from '../store/slices/candidateSlice';
+import TalentCard from '../components/talent-card/TalentCard';
+
+// When associateIdOverride is provided the component is embedded in the Trainee Dashboard.
+// When used standalone via route, it falls back to useParams.
+const TraineeTalentCard = ({ associateIdOverride }) => {
+  const { associateId: paramAssociateId } = useParams();
+  const associateId = associateIdOverride || paramAssociateId;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { currentCandidate, loading, error } = useSelector((state) => state.candidate);
+
+  useEffect(() => {
+    if (associateId) {
+      dispatch(getAssociateById(parseInt(associateId)));
+    }
+  }, [associateId, dispatch]);
+
+  return (
+    <TalentCard
+      role="trainee"
+      associateId={associateId}
+      candidate={currentCandidate}
+      loading={loading}
+      error={error}
+      onBack={associateIdOverride
+        ? undefined
+        : () => (window.history.length > 1 ? navigate(-1) : navigate('/trainee/dashboard'))}
+    />
+  );
+};
+
+export default TraineeTalentCard;

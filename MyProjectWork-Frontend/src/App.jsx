@@ -1,0 +1,26 @@
+import { Routes, Route } from 'react-router-dom';
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminTalentCard from './pages/AdminTalentCard';
+import TraineeDashboard from './pages/TraineeDashboard';
+import LeaderDashboard from './pages/LeaderDashboard';
+import LeaderTalentCard from './pages/LeaderTalentCard';
+
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      <Route path="/admin/talent-card/:associateId" element={<AdminTalentCard />} />
+      <Route path="/trainee/dashboard" element={<TraineeDashboard />} />
+      <Route path="/leader/dashboard" element={<LeaderDashboard />} />
+      <Route path="/leader/talent-card/:associateId" element={<LeaderTalentCard />} />
+    </Routes>
+  );
+};
+
+export default App;
