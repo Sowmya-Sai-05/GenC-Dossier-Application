@@ -3,7 +3,9 @@ package com.cts.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
@@ -26,6 +28,8 @@ public class CandidateScore {
     @Column(length = 2000)
     private String finalEvaluationFeedback;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToOne
     @JoinColumn(name="associate_id")
     private Candidate candidate;

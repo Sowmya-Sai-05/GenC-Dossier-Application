@@ -5,7 +5,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -39,24 +41,43 @@ public class Candidate {
     private String sl;
     private LocalDate doj;
 
+    // Relationship fields are excluded from equals/hashCode/toString — Lombok's @Data would
+    // otherwise generate hashCode()/toString() that recurse into the other side's own
+    // back-reference (e.g. Candidate <-> CandidateScore, Candidate <-> AIFluencyStatus),
+    // causing a StackOverflowError the moment either method is called (Hibernate's own
+    // internals, a HashSet, a debug log line, etc. can all trigger it).
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
     private CandidateScore candidateScore;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "candidate" , cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Certification> certificates;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Achievement> achievement;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
     private Skills skills;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Project> projects;
 
-    @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AIFluencyStatus> aiFluencyStatuses;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
+    private AIFluencyStatus aiFluencyStatus;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
     private User user;
 

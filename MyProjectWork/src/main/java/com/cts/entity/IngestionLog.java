@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -55,6 +57,8 @@ public class IngestionLog {
      * Errors are loaded explicitly via the /ingestion-logs/{id} endpoint so the
      * list endpoint doesn't trigger lazy-loading exceptions during serialization.
      */
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "ingestionLog", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<IngestionError> errors = new ArrayList<>();

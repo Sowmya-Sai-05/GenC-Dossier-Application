@@ -1,45 +1,548 @@
-2026-07-15 17:51:10.439 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 18976 (C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork\target\classes started by 2507337 in C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork)
-2026-07-15 17:51:10.444 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
-2026-07-15 17:51:10.445 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
-2026-07-15 17:51:14.035 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
-2026-07-15 17:51:14.824 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 4.629 seconds (process running for 5.401)
-2026-07-15 17:52:01.062 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 18976 (C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork\target\classes started by 2507337 in C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork)
-2026-07-15 17:52:01.063 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
-2026-07-15 17:52:01.063 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
-2026-07-15 17:52:02.080 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
-2026-07-15 17:52:02.557 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 1.533 seconds (process running for 53.135)
-2026-07-15 17:53:36.878 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
-2026-07-15 17:53:36.878 [http-nio-8086-exec-2] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
-2026-07-15 17:53:52.042 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
-2026-07-15 17:53:52.155 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
-2026-07-15 18:04:04.507 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
-2026-07-15 18:04:04.537 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
-2026-07-15 18:04:04.673 [http-nio-8086-exec-7] INFO  c.cts.controller.AIFluencyController - Received request to upload AI Tracking Sheet
-2026-07-15 18:04:04.674 [http-nio-8086-exec-7] INFO  com.cts.service.AIFluencyService - Starting AI Tracking upload process
-2026-07-15 18:04:09.989 [http-nio-8086-exec-7] INFO  com.cts.service.AIFluencyService - Tracking upload completed. Saved Trainees: 0, Rejected Trainees: 15
-2026-07-15 18:19:33.863 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 17668 (C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork\target\classes started by 2507337 in C:\Users\2507337\Documents\GenC-Dosier-Application\MyProjectWork)
-2026-07-15 18:19:33.864 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
-2026-07-15 18:19:33.866 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
-2026-07-15 18:19:41.009 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
-2026-07-15 18:19:42.511 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 9.271 seconds (process running for 10.72)
-2026-07-15 18:19:57.099 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
-2026-07-15 18:19:57.430 [http-nio-8086-exec-2] ERROR com.cts.security.JwtUtils - JWT token is expired: JWT expired at 2026-07-15T08:53:17Z. Current time: 2026-07-15T12:49:57Z, a difference of 14200430 milliseconds.  Allowed clock skew: 0 milliseconds.
-2026-07-15 18:19:57.497 [http-nio-8086-exec-2] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
-2026-07-15 18:21:16.711 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
-2026-07-15 18:21:16.728 [http-nio-8086-exec-5] ERROR com.cts.security.JwtUtils - JWT token is expired: JWT expired at 2026-07-15T08:53:17Z. Current time: 2026-07-15T12:51:16Z, a difference of 14279728 milliseconds.  Allowed clock skew: 0 milliseconds.
-2026-07-15 18:21:16.728 [http-nio-8086-exec-5] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
-2026-07-15 18:26:46.627 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
-2026-07-15 18:26:46.635 [http-nio-8086-exec-8] ERROR com.cts.security.JwtUtils - JWT token is expired: JWT expired at 2026-07-15T08:53:17Z. Current time: 2026-07-15T12:56:46Z, a difference of 14609635 milliseconds.  Allowed clock skew: 0 milliseconds.
-2026-07-15 18:26:46.644 [http-nio-8086-exec-8] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
-2026-07-15 18:26:51.182 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
-2026-07-15 18:26:51.191 [http-nio-8086-exec-1] ERROR com.cts.security.JwtUtils - JWT token is expired: JWT expired at 2026-07-15T08:53:17Z. Current time: 2026-07-15T12:56:51Z, a difference of 14614191 milliseconds.  Allowed clock skew: 0 milliseconds.
-2026-07-15 18:26:51.191 [http-nio-8086-exec-1] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
-2026-07-15 18:26:51.206 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
-2026-07-15 18:26:51.220 [http-nio-8086-exec-2] ERROR com.cts.security.JwtUtils - JWT token is expired: JWT expired at 2026-07-15T08:53:17Z. Current time: 2026-07-15T12:56:51Z, a difference of 14614220 milliseconds.  Allowed clock skew: 0 milliseconds.
-2026-07-15 18:26:51.220 [http-nio-8086-exec-2] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
-2026-07-15 18:26:57.312 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
-2026-07-15 18:26:57.325 [http-nio-8086-exec-5] ERROR com.cts.security.JwtUtils - JWT token is expired: JWT expired at 2026-07-15T08:53:17Z. Current time: 2026-07-15T12:56:57Z, a difference of 14620325 milliseconds.  Allowed clock skew: 0 milliseconds.
-2026-07-15 18:26:57.329 [http-nio-8086-exec-5] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
-2026-07-15 18:26:57.348 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
-2026-07-15 18:26:57.363 [http-nio-8086-exec-6] ERROR com.cts.security.JwtUtils - JWT token is expired: JWT expired at 2026-07-15T08:53:17Z. Current time: 2026-07-15T12:56:57Z, a difference of 14620363 milliseconds.  Allowed clock skew: 0 milliseconds.
-2026-07-15 18:26:57.363 [http-nio-8086-exec-6] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 10:43:18.180 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 10:43:18.335 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 10:43:18.850 [http-nio-8086-exec-2] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-19 10:43:19.248 [http-nio-8086-exec-2] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-19 10:43:22.021 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 10:43:22.031 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 10:43:22.084 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 10:43:22.094 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:15:04.920 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 19728 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 11:15:04.921 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 11:15:04.922 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 11:15:13.673 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 11:15:16.173 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 11.638 seconds (process running for 12.546)
+2026-07-19 11:15:20.921 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:15:21.057 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:15:21.390 [http-nio-8086-exec-2] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-19 11:15:21.691 [http-nio-8086-exec-2] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-19 11:15:46.159 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:15:46.162 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:15:46.225 [http-nio-8086-exec-4] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=7575 bytes
+2026-07-19 11:15:46.225 [http-nio-8086-exec-4] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 11:15:48.324 [http-nio-8086-exec-4] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=0, merged=0, rejected=20
+2026-07-19 11:15:56.486 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:15:56.495 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:15:56.523 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:15:56.523 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:16:01.530 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:16:01.537 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:16:11.246 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:16:11.251 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:16:13.818 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:16:13.825 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:16:19.763 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:16:19.770 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:16:23.737 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:16:23.744 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:17:17.189 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:17:17.195 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:17:17.202 [http-nio-8086-exec-10] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-19 11:17:17.343 [http-nio-8086-exec-10] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-19 11:19:56.709 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:19:56.710 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:19:56.724 [http-nio-8086-exec-3] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 11:19:56.726 [http-nio-8086-exec-3] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 11:19:57.263 [http-nio-8086-exec-3] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=2, merged=0, rejected=18
+2026-07-19 11:20:02.821 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:20:02.826 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:20:02.842 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:20:02.846 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:20:20.347 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:20:20.348 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:20:25.940 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:20:25.947 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:20:47.773 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:20:47.773 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:20:47.788 [http-nio-8086-exec-3] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-19 11:20:47.889 [http-nio-8086-exec-3] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-19 11:21:05.704 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:21:05.704 [http-nio-8086-exec-6] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:21:06.696 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:21:06.705 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:21:06.721 [http-nio-8086-exec-8] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:21:06.732 [http-nio-8086-exec-8] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:21:06.739 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:21:06.745 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:21:06.750 [http-nio-8086-exec-9] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:21:06.761 [http-nio-8086-exec-9] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:21:06.766 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:21:06.771 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:21:06.779 [http-nio-8086-exec-10] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:21:06.788 [http-nio-8086-exec-10] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:21:06.791 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:21:06.796 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:21:06.802 [http-nio-8086-exec-1] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:21:06.809 [http-nio-8086-exec-1] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:21:06.842 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:21:06.842 [http-nio-8086-exec-2] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:21:37.876 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:21:37.880 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:21:40.601 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:21:40.606 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:21:40.613 [http-nio-8086-exec-6] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:21:40.627 [http-nio-8086-exec-6] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:21:40.629 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:21:40.638 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:21:40.643 [http-nio-8086-exec-7] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:21:40.655 [http-nio-8086-exec-7] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:21:40.658 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:21:40.663 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:21:40.670 [http-nio-8086-exec-8] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:21:40.677 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:21:40.677 [http-nio-8086-exec-9] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:21:40.682 [http-nio-8086-exec-8] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:21:40.687 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:21:40.693 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:21:40.699 [http-nio-8086-exec-10] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:21:40.707 [http-nio-8086-exec-10] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:21:57.456 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:21:57.456 [http-nio-8086-exec-2] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:22:02.855 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:22:02.856 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:22:20.907 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:22:20.912 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:22:38.539 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:22:38.545 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:22:59.052 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:22:59.056 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:23:00.762 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:23:00.768 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:23:02.491 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:23:02.497 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:23:03.311 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:23:03.316 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:23:03.534 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:23:03.550 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:23:20.953 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:23:20.956 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:23:20.963 [http-nio-8086-exec-10] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-19 11:23:21.063 [http-nio-8086-exec-10] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-19 11:23:32.316 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:23:32.316 [http-nio-8086-exec-9] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:23:38.419 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:23:38.419 [http-nio-8086-exec-2] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:23:46.276 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:23:46.276 [http-nio-8086-exec-4] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:23:46.726 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:23:46.726 [http-nio-8086-exec-5] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:23:46.766 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:23:46.774 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=JoyalJude.MP@cognizant.com
+2026-07-19 11:23:46.783 [http-nio-8086-exec-8] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109599
+2026-07-19 11:23:46.799 [http-nio-8086-exec-8] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109599
+2026-07-19 11:23:46.804 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:23:46.809 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=JoyalJude.MP@cognizant.com
+2026-07-19 11:23:46.816 [http-nio-8086-exec-10] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109599
+2026-07-19 11:23:46.823 [http-nio-8086-exec-10] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109599
+2026-07-19 11:23:46.828 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:23:46.835 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=JoyalJude.MP@cognizant.com
+2026-07-19 11:23:46.841 [http-nio-8086-exec-9] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109599
+2026-07-19 11:23:46.850 [http-nio-8086-exec-9] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109599
+2026-07-19 11:23:46.850 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:23:46.850 [http-nio-8086-exec-1] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:23:46.853 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:23:46.855 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=JoyalJude.MP@cognizant.com
+2026-07-19 11:23:46.865 [http-nio-8086-exec-2] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109599
+2026-07-19 11:23:46.873 [http-nio-8086-exec-2] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109599
+2026-07-19 11:24:07.689 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:07.699 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=JoyalJude.MP@cognizant.com
+2026-07-19 11:24:07.710 [http-nio-8086-exec-6] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109599
+2026-07-19 11:24:07.728 [http-nio-8086-exec-6] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109599
+2026-07-19 11:24:07.733 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:07.741 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=JoyalJude.MP@cognizant.com
+2026-07-19 11:24:07.748 [http-nio-8086-exec-7] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109599
+2026-07-19 11:24:07.772 [http-nio-8086-exec-7] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109599
+2026-07-19 11:24:07.781 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:07.794 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=JoyalJude.MP@cognizant.com
+2026-07-19 11:24:07.815 [http-nio-8086-exec-7] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109599
+2026-07-19 11:24:07.832 [http-nio-8086-exec-7] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109599
+2026-07-19 11:24:07.836 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:07.842 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=JoyalJude.MP@cognizant.com
+2026-07-19 11:24:07.852 [http-nio-8086-exec-10] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109599
+2026-07-19 11:24:07.863 [http-nio-8086-exec-10] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109599
+2026-07-19 11:24:07.917 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:24:07.918 [http-nio-8086-exec-9] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:24:21.202 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:24:21.203 [http-nio-8086-exec-1] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:24:26.384 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:24:26.384 [http-nio-8086-exec-3] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:24:26.868 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:24:26.868 [http-nio-8086-exec-4] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:24:26.920 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:26.924 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:24:26.929 [http-nio-8086-exec-8] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:24:26.937 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:24:26.937 [http-nio-8086-exec-7] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:24:26.940 [http-nio-8086-exec-8] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:24:26.945 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:26.956 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:24:26.966 [http-nio-8086-exec-10] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:24:26.976 [http-nio-8086-exec-10] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:24:26.979 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:26.986 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:24:26.993 [http-nio-8086-exec-9] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:24:27.003 [http-nio-8086-exec-9] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:24:27.007 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:27.012 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=DivyaDarshini.D@cognizant.com
+2026-07-19 11:24:27.017 [http-nio-8086-exec-1] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 103476
+2026-07-19 11:24:27.024 [http-nio-8086-exec-1] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 103476
+2026-07-19 11:24:27.040 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:24:27.040 [http-nio-8086-exec-2] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:24:41.438 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:24:41.438 [http-nio-8086-exec-3] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:24:46.882 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:24:46.882 [http-nio-8086-exec-5] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:24:47.351 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:24:47.351 [http-nio-8086-exec-6] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:24:47.402 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:47.406 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 11:24:47.414 [http-nio-8086-exec-10] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 11:24:47.423 [http-nio-8086-exec-10] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 11:24:47.425 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:47.432 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 11:24:47.437 [http-nio-8086-exec-9] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 11:24:47.444 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:24:47.444 [http-nio-8086-exec-1] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:24:47.447 [http-nio-8086-exec-9] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 11:24:47.450 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:47.454 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 11:24:47.459 [http-nio-8086-exec-2] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 11:24:47.469 [http-nio-8086-exec-2] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 11:24:47.472 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:24:47.478 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 11:24:47.484 [http-nio-8086-exec-3] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 11:24:47.493 [http-nio-8086-exec-3] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 11:24:57.868 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:24:57.868 [http-nio-8086-exec-4] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:38:36.767 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 19728 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 11:38:36.768 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 11:38:36.768 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 11:38:39.431 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 19728 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 11:38:39.431 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 11:38:39.431 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 11:38:40.604 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 11:41:13.994 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 19728 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 11:41:13.994 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 11:41:13.994 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 11:41:15.202 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 11:41:15.877 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 1.924 seconds (process running for 1572.238)
+2026-07-19 11:50:41.505 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:50:41.506 [http-nio-8086-exec-4] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:50:42.246 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:50:42.259 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 11:50:42.310 [http-nio-8086-exec-8] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 11:50:42.326 [http-nio-8086-exec-8] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 11:50:42.356 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:50:42.373 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 11:50:42.382 [http-nio-8086-exec-9] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 11:50:42.396 [http-nio-8086-exec-9] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 11:50:42.404 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:50:42.410 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 11:50:42.419 [http-nio-8086-exec-7] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 11:50:42.430 [http-nio-8086-exec-7] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 11:50:42.438 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:50:42.452 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 11:50:42.455 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:50:42.455 [http-nio-8086-exec-1] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:50:42.459 [http-nio-8086-exec-10] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 11:50:42.469 [http-nio-8086-exec-10] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 11:50:47.601 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:50:47.602 [http-nio-8086-exec-4] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:50:51.886 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 11:50:51.887 [http-nio-8086-exec-6] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 11:51:25.402 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 19728 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 11:51:25.404 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 11:51:25.405 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 11:51:27.605 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 11:51:28.862 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 3.6 seconds (process running for 2185.223)
+2026-07-19 11:51:30.232 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:51:30.237 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:51:30.958 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 19728 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 11:51:30.958 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 11:51:30.959 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 11:51:32.476 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 11:51:33.294 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 2.389 seconds (process running for 2189.655)
+2026-07-19 11:51:33.339 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:51:33.343 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:54:44.138 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:54:44.150 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:54:46.150 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:54:46.162 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:54:46.162 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:54:46.173 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:55:14.524 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:55:14.536 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:55:14.571 [http-nio-8086-exec-2] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 11:55:14.572 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 11:55:15.794 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=2, merged=0, rejected=18
+2026-07-19 11:55:32.114 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:55:32.115 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:55:32.130 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:55:32.130 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:55:43.566 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:55:43.572 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:55:43.595 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:55:43.607 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:57:24.334 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:57:24.334 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 11:57:24.351 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:57:24.351 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 11:59:45.131 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 42604 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 11:59:45.132 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 11:59:45.132 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 12:00:01.362 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 12:00:03.548 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 18.964 seconds (process running for 20.417)
+2026-07-19 12:00:22.334 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:00:22.633 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:00:26.650 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:00:26.666 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:00:26.673 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:00:26.689 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:00:38.620 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:00:38.646 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:00:38.855 [http-nio-8086-exec-7] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:00:38.857 [http-nio-8086-exec-7] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:00:44.817 [http-nio-8086-exec-7] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=0, merged=0, rejected=20
+2026-07-19 12:01:09.287 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:01:09.287 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:01:09.313 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:01:09.313 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:01:12.491 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:01:12.494 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:01:12.521 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:01:12.521 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:01:58.621 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:01:58.644 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:01:58.738 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:01:58.754 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:03:56.535 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 42604 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 12:03:56.536 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 12:03:56.537 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 12:03:58.037 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 12:03:58.783 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 2.333 seconds (process running for 255.653)
+2026-07-19 12:04:50.934 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:04:50.961 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:04:51.166 [http-nio-8086-exec-2] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:04:51.166 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:04:52.164 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=0, merged=0, rejected=20
+2026-07-19 12:04:57.858 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:04:57.877 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:04:57.904 [http-nio-8086-exec-4] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:04:57.906 [http-nio-8086-exec-4] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:04:58.629 [http-nio-8086-exec-4] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=0, merged=0, rejected=20
+2026-07-19 12:05:05.364 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:05:05.383 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:05:07.989 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:05:08.002 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:05:08.011 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:05:08.021 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:05:27.349 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:05:27.364 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:05:27.390 [http-nio-8086-exec-1] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:05:27.390 [http-nio-8086-exec-1] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:05:28.291 [http-nio-8086-exec-1] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=0, merged=0, rejected=20
+2026-07-19 12:05:51.985 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 23968 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 12:05:51.987 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 12:05:51.988 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 12:06:00.817 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 12:06:03.442 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 12.013 seconds (process running for 13.41)
+2026-07-19 12:06:26.100 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:06:26.429 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:06:27.701 [http-nio-8086-exec-2] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:06:27.703 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:06:32.991 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=0, merged=0, rejected=20
+2026-07-19 12:06:56.112 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:06:56.140 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:06:56.170 [http-nio-8086-exec-5] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-19 12:06:56.646 [http-nio-8086-exec-5] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-19 12:07:00.786 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:07:00.799 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:07:00.874 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:07:00.898 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:07:03.139 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:07:03.163 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:07:03.219 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:07:03.235 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:07:17.119 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:07:17.137 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:07:17.165 [http-nio-8086-exec-5] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:07:17.165 [http-nio-8086-exec-5] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:07:18.013 [http-nio-8086-exec-5] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=0, merged=0, rejected=20
+2026-07-19 12:07:33.434 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:07:33.445 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:07:33.467 [http-nio-8086-exec-6] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:07:33.469 [http-nio-8086-exec-6] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:07:34.109 [http-nio-8086-exec-6] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=0, merged=0, rejected=20
+2026-07-19 12:07:42.303 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:07:42.305 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:07:42.323 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:07:42.323 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:08:49.684 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:08:49.707 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:08:49.739 [http-nio-8086-exec-5] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:08:49.741 [http-nio-8086-exec-5] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:08:50.560 [http-nio-8086-exec-5] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=0, merged=0, rejected=20
+2026-07-19 12:13:16.123 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 23968 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 12:13:16.124 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 12:13:16.124 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 12:13:21.620 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 10680 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 12:13:21.621 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 12:13:21.622 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 12:13:30.197 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 12:13:31.916 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 10.868 seconds (process running for 12.741)
+2026-07-19 12:13:53.035 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:13:53.360 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:13:58.698 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:13:58.702 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:13:58.716 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:13:58.718 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:14:00.984 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:14:01.003 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:14:01.169 [http-nio-8086-exec-8] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:14:01.169 [http-nio-8086-exec-8] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:14:06.298 [http-nio-8086-exec-8] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=0, merged=0, rejected=20
+2026-07-19 12:14:46.099 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 27788 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 12:14:46.100 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 12:14:46.100 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 12:14:55.947 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 12:15:02.041 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 16.486 seconds (process running for 17.826)
+2026-07-19 12:15:57.060 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:15:57.328 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:15:58.246 [http-nio-8086-exec-2] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:15:58.246 [http-nio-8086-exec-2] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:16:13.845 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:16:13.861 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:16:13.889 [http-nio-8086-exec-4] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:16:13.889 [http-nio-8086-exec-4] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:17:29.228 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:17:29.249 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:17:30.670 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:17:30.680 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:17:30.682 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:17:30.693 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:19:05.642 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:19:05.654 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:19:05.676 [http-nio-8086-exec-4] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-19 12:19:06.012 [http-nio-8086-exec-4] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-19 12:19:55.418 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:19:55.442 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:19:55.468 [http-nio-8086-exec-6] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9582 bytes
+2026-07-19 12:19:55.470 [http-nio-8086-exec-6] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:20:00.339 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:20:00.355 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:20:02.299 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:20:02.315 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:20:02.321 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:20:02.335 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:20:22.946 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:20:22.961 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:20:23.022 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:20:23.037 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:20:36.683 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:20:36.683 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:20:36.697 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:20:36.697 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:21:07.336 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:21:07.351 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:21:07.396 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:21:07.414 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:23:25.045 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:23:25.054 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:23:25.077 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:23:25.094 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:25:04.692 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 12:25:04.698 [http-nio-8086-exec-3] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 12:25:10.068 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:25:10.083 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:25:10.141 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:25:10.154 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:27:07.161 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:27:07.182 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:27:08.988 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:27:09.009 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:27:09.018 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:27:09.032 [http-nio-8086-exec-4] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:30:50.297 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:30:50.316 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:30:51.762 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:30:51.775 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:30:51.785 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:30:51.799 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:31:16.622 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:31:16.645 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:31:16.668 [http-nio-8086-exec-2] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-19 12:31:17.108 [http-nio-8086-exec-2] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-19 12:31:25.844 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:31:25.850 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:31:25.862 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:31:25.869 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:31:29.009 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:31:29.028 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:31:29.040 [http-nio-8086-exec-1] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-19 12:31:29.490 [http-nio-8086-exec-1] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-19 12:31:40.229 [http-nio-8086-exec-8] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 12:31:40.231 [http-nio-8086-exec-8] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 12:31:41.665 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:31:41.680 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 12:31:41.710 [http-nio-8086-exec-5] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 12:31:41.739 [http-nio-8086-exec-5] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 12:31:41.753 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:31:41.758 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 12:31:41.789 [http-nio-8086-exec-6] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 12:31:41.821 [http-nio-8086-exec-6] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 12:31:41.828 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:31:41.842 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 12:31:41.881 [http-nio-8086-exec-7] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 12:31:41.915 [http-nio-8086-exec-7] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 12:31:41.924 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:31:41.932 [http-nio-8086-exec-10] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=Gopal.Likhitha@cognizant.com
+2026-07-19 12:31:41.973 [http-nio-8086-exec-10] INFO  c.cts.controller.TraineeController - Received request to fetch candidate with ID: 109647
+2026-07-19 12:31:42.014 [http-nio-8086-exec-10] DEBUG c.cts.controller.TraineeController - Successfully fetched candidate with ID: 109647
+2026-07-19 12:31:42.056 [http-nio-8086-exec-1] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 12:31:42.056 [http-nio-8086-exec-1] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 12:31:58.874 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 12:31:58.884 [http-nio-8086-exec-9] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 12:32:09.723 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=false
+2026-07-19 12:32:09.723 [http-nio-8086-exec-3] DEBUG com.cts.security.AuthTokenFilter - AuthTokenFilter: no valid JWT found, request will remain unauthenticated
+2026-07-19 12:32:27.846 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:32:27.865 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:32:27.954 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:32:27.981 [http-nio-8086-exec-6] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:40:37.517 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:40:37.534 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:40:39.075 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:40:39.079 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:40:39.085 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:40:39.097 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:43:23.720 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 27788 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 12:43:23.720 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 12:43:23.720 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 12:43:29.638 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 12:43:32.687 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 9.154 seconds (process running for 1728.471)
+2026-07-19 12:43:35.495 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 27788 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 12:43:35.495 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 12:43:35.495 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 12:43:40.457 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 12:43:43.353 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 8.048 seconds (process running for 1739.14)
+2026-07-19 12:45:18.392 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 27788 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 12:45:18.392 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 12:45:18.393 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 12:45:22.586 [restartedMain] INFO  com.cts.Demo1Application - Starting Demo1Application using Java 21.0.2 with PID 25632 (C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork\target\classes started by 2507326 in C:\Users\2507326\OneDrive - Cognizant\Desktop\Avengers\GenC-Dossier-Application\MyProjectWork)
+2026-07-19 12:45:22.586 [restartedMain] DEBUG com.cts.Demo1Application - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-07-19 12:45:22.587 [restartedMain] INFO  com.cts.Demo1Application - No active profile set, falling back to 1 default profile: "default"
+2026-07-19 12:45:37.169 [restartedMain] DEBUG com.cts.security.AuthTokenFilter - Filter 'authTokenFilter' configured for use
+2026-07-19 12:45:38.899 [restartedMain] INFO  com.cts.Demo1Application - Started Demo1Application in 16.669 seconds (process running for 17.666)
+2026-07-19 12:45:53.728 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:45:54.112 [http-nio-8086-exec-2] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:45:55.103 [http-nio-8086-exec-2] INFO  com.cts.controller.AdminController - Received request to fetch candidates - page: 0, pageSize: null
+2026-07-19 12:45:55.866 [http-nio-8086-exec-2] DEBUG com.cts.controller.AdminController - Successfully fetched page 0 with candidates
+2026-07-19 12:46:30.406 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:46:30.431 [http-nio-8086-exec-3] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:46:30.591 [http-nio-8086-exec-3] INFO  c.cts.controller.AIFluencyController - Received AI Fluency upload request: AI Learning Catalogue.xlsx, size=9590 bytes
+2026-07-19 12:46:30.591 [http-nio-8086-exec-3] INFO  com.cts.service.AIFluencyService - Starting AI Fluency upload process
+2026-07-19 12:46:36.002 [http-nio-8086-exec-3] INFO  com.cts.service.AIFluencyService - AI Fluency upload completed. total=20, saved=4, merged=0, rejected=16
+2026-07-19 12:46:49.306 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:46:49.328 [http-nio-8086-exec-5] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:46:54.070 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:46:54.086 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: parsed JWT present=true
+2026-07-19 12:46:54.086 [http-nio-8086-exec-7] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com
+2026-07-19 12:46:54.104 [http-nio-8086-exec-9] INFO  com.cts.security.AuthTokenFilter - AuthTokenFilter: token valid for user=admin@dossier.com

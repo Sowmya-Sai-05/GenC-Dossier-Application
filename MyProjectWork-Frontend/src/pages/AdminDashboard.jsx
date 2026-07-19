@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../store/slices/authSlice';
-import { getAllCandidates, uploadExcel, uploadAICatalogue, uploadAITracking, registerLeader, clearLeaderRegistration, deleteCandidate, getIngestionLogs, getIngestionLogDetails, clearIngestionLogDetails, getLeaders, deleteLeader, getAICatalogue, getAITracking } from '../store/slices/adminSlice';
+import { getAllCandidates, uploadExcel, uploadAIFluency, registerLeader, clearLeaderRegistration, deleteCandidate, getIngestionLogs, getIngestionLogDetails, clearIngestionLogDetails, getLeaders, deleteLeader, getAICatalogue, getAITracking } from '../store/slices/adminSlice';
 import { FcComboChart, FcConferenceCall, FcDocument, FcUpload, FcBusinessman, FcDatabase } from 'react-icons/fc';
 import { MdEmail, MdLock, MdVisibility, MdVisibilityOff, MdCheckCircle, MdError, MdDelete, MdWarning, MdCloudUpload, MdClose, MdListAlt, MdAddCircleOutline, MdSync, MdBlock, MdRefresh, MdSchema, MdReportProblem, MdInfoOutline, MdAccessTime, MdMenu } from 'react-icons/md';
 import { FaFileExcel } from 'react-icons/fa';
@@ -485,44 +485,63 @@ const ExcelUpload = ({ onViewLogs }) => {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // AI Learning Upload Component
+// One drop zone handles a single workbook containing both the Master Data
+// (catalogue) sheet and the completion-tracking sheet; the backend processes
+// both in one pass.
 // ─────────────────────────────────────────────────────────────────────────────
 const AILearningUpload = ({ onViewLogs }) => {
-  const [catalogueFile, setCatalogueFile] = useState(null);
-  const [trackingFile, setTrackingFile] = useState(null);
-  const catalogueInputRef = useRef(null);
-  const trackingInputRef = useRef(null);
+  const [file, setFile] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [localError, setLocalError] = useState('');
+  const fileInputRef = useRef(null);
   const dispatch = useDispatch();
   const { loading, error, uploadResult, uploadProgress, uploadPhase, catalogueList, catalogueLoading, trackingList, trackingLoading } = useSelector((state) => state.admin);
   const [showCatalogue, setShowCatalogue] = useState(false);
   const [showTracking, setShowTracking] = useState(false);
 
-  const handleUploadCatalogue = async () => {
-    if (!catalogueFile) {
-      // open file chooser if no file selected
-      catalogueInputRef.current?.click();
+  const acceptFile = (f) => {
+    if (!f) return;
+    if (!isExcelFile(f)) {
+      setLocalError('Only .xlsx and .xls files are supported.');
       return;
     }
-    await dispatch(uploadAICatalogue(catalogueFile));
+    setFile(f);
+    setLocalError('');
   };
 
-  const handleUploadTracking = async () => {
-    if (!trackingFile) {
-      trackingInputRef.current?.click();
-      return;
-    }
-    await dispatch(uploadAITracking(trackingFile));
+  const handleFileChange = (e) => acceptFile(e.target.files?.[0]);
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    acceptFile(e.dataTransfer.files?.[0]);
   };
+
+  const handleClearFile = () => {
+    setFile(null);
+    setLocalError('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
+  const handleUpload = async () => {
+    if (!file) return;
+    await dispatch(uploadAIFluency(file));
+  };
+
   const fetchCatalogue = async () => {
     await dispatch(getAICatalogue());
     setShowCatalogue(true);
   };
 
   const fetchTracking = async () => {
-    await dispatch(getAITracking());
+    // Columns are driven by the full catalogue (every course, even ones an associate
+    // has no record for yet), so make sure it's loaded alongside the tracking data.
+    await Promise.all([dispatch(getAICatalogue()), dispatch(getAITracking())]);
     setShowTracking(true);
   };
 
   const apiErrorMessage = typeof error === 'string' ? error : error?.message || (error ? JSON.stringify(error) : null);
+  const apiErrorList = Array.isArray(error?.errors) ? error.errors : [];
 
   return (
     <div className="max-w-3xl">
@@ -530,56 +549,125 @@ const AILearningUpload = ({ onViewLogs }) => {
         open={uploadPhase === 'uploading' || uploadPhase === 'processing'}
         phase={uploadPhase}
         progress={uploadProgress}
+        fileName={file?.name}
+        fileSize={file?.size}
       />
       <div className="mb-6">
         <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
           <FcDatabase size="1.2em" /> AI Learning Ingestion
         </h3>
         <p className="text-sm text-gray-500 mt-1">
-          Upload the AI Learning Catalogue and Trainee Tracking sheets to populate AI Fluency.
+          Upload one workbook containing the <span className="font-medium">Master Data</span> (course catalogue) sheet
+          and the <span className="font-medium">completion tracking</span> sheet — both are processed together.
+          Only courses present in the Master Data sheet are tracked. Accepted formats:{' '}
+          <span className="font-medium">.xlsx</span>, <span className="font-medium">.xls</span>.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Catalogue Upload */}
-        <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center">
-          <h4 className="font-semibold text-lg mb-2">Catalogue Upload</h4>
-          <p className="text-xs text-gray-500 text-center mb-4">Maps course codes to AI Skills or Certifications</p>
-          <input ref={catalogueInputRef} type="file" accept=".xlsx,.xls" onChange={(e) => setCatalogueFile(e.target.files?.[0])} className="mb-2 text-sm w-full" />
-          <div className="w-full text-xs text-gray-600 mb-3">{catalogueFile ? catalogueFile.name : 'No file chosen'}</div>
-          <button
-            onClick={handleUploadCatalogue}
-            disabled={loading}
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded shadow-sm disabled:opacity-50"
+      <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
+        {!file ? (
+          <div
+            onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+            onDragLeave={() => setIsDragging(false)}
+            onDrop={handleDrop}
+            onClick={() => fileInputRef.current?.click()}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') fileInputRef.current?.click(); }}
+            className={`relative cursor-pointer rounded-xl border-2 border-dashed transition-all px-6 py-12 flex flex-col items-center justify-center text-center
+              ${isDragging
+                ? 'border-indigo-500 bg-indigo-50 scale-[1.01]'
+                : 'border-gray-300 bg-gray-50 hover:border-indigo-400 hover:bg-indigo-50/40'}`}
           >
-            {catalogueFile ? 'Upload Catalogue' : 'Choose & Upload Catalogue'}
+            <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-colors ${isDragging ? 'bg-indigo-100' : 'bg-white shadow-sm'}`}>
+              <MdCloudUpload className={isDragging ? 'text-indigo-600' : 'text-indigo-500'} size="2.2em" />
+            </div>
+            <p className="text-base font-semibold text-gray-700">
+              {isDragging ? 'Drop your file here' : 'Drag & drop your AI Learning workbook here'}
+            </p>
+            <p className="text-sm text-gray-500 mt-1">
+              or <span className="text-indigo-600 font-medium underline-offset-2 hover:underline">browse from your computer</span>
+            </p>
+            <p className="text-xs text-gray-400 mt-3">XLSX or XLS · Master Data + Tracking sheets</p>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".xlsx,.xls"
+              onChange={handleFileChange}
+              className="hidden"
+            />
+          </div>
+        ) : (
+          <div className="rounded-xl border border-indigo-200 bg-indigo-50/40 p-4 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-lg bg-emerald-100 flex items-center justify-center shrink-0">
+              <FaFileExcel className="text-emerald-600" size="1.6em" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-medium text-gray-900 truncate" title={file.name}>{file.name}</p>
+              <p className="text-xs text-gray-500 mt-0.5">
+                {formatFileSize(file.size)} • Ready to upload
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleClearFile}
+              disabled={loading}
+              className="text-gray-400 hover:text-red-600 disabled:opacity-50 transition-colors p-1"
+              aria-label="Remove file"
+              title="Remove file"
+            >
+              <MdClose size="1.4em" />
+            </button>
+          </div>
+        )}
+
+        {localError && (
+          <div className="mt-4 flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-md">
+            <MdError className="text-red-500 mt-0.5 shrink-0" size="1.2em" />
+            <p className="text-sm text-red-700">{localError}</p>
+          </div>
+        )}
+
+        <div className="mt-5 flex items-center justify-end gap-3">
+          <button
+            type="button"
+            onClick={handleClearFile}
+            disabled={!file || loading}
+            className="px-4 py-2 text-sm font-medium border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Clear
           </button>
           <button
-            onClick={fetchCatalogue}
-            disabled={catalogueLoading}
-            className="mt-3 w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 rounded shadow-sm disabled:opacity-50"
+            onClick={handleUpload}
+            disabled={!file || loading}
+            className="flex items-center gap-2 px-5 py-2 text-sm font-medium bg-indigo-600 text-white rounded-md shadow-sm hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            View Catalogue
+            {loading ? (
+              <>
+                <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                {uploadPhase === 'processing' ? 'Processing…' : `Uploading ${uploadProgress}%`}
+              </>
+            ) : (
+              <>
+                <MdCloudUpload size="1.2em" />
+                Upload Workbook
+              </>
+            )}
           </button>
         </div>
 
-        {/* Tracking Upload */}
-        <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center">
-          <h4 className="font-semibold text-lg mb-2">Tracking Upload</h4>
-          <p className="text-xs text-gray-500 text-center mb-4">Upload trainee status for dynamic AI courses</p>
-          <input ref={trackingInputRef} type="file" accept=".xlsx,.xls" onChange={(e) => setTrackingFile(e.target.files?.[0])} className="mb-2 text-sm w-full" />
-          <div className="w-full text-xs text-gray-600 mb-3">{trackingFile ? trackingFile.name : 'No file chosen'}</div>
+        <div className="mt-5 flex items-center justify-end gap-3 border-t border-gray-100 pt-4">
           <button
-            onClick={handleUploadTracking}
-            disabled={loading}
-            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded shadow-sm disabled:opacity-50"
+            onClick={fetchCatalogue}
+            disabled={catalogueLoading}
+            className="text-sm font-medium text-gray-700 hover:text-indigo-600 disabled:opacity-50"
           >
-            {trackingFile ? 'Upload Tracking' : 'Choose & Upload Tracking'}
+            View Catalogue
           </button>
           <button
             onClick={fetchTracking}
             disabled={trackingLoading}
-            className="mt-3 w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 rounded shadow-sm disabled:opacity-50"
+            className="text-sm font-medium text-gray-700 hover:text-indigo-600 disabled:opacity-50"
           >
             View Tracking
           </button>
@@ -588,23 +676,115 @@ const AILearningUpload = ({ onViewLogs }) => {
 
       {error && apiErrorMessage && (
         <div className="mt-6 rounded-xl border border-red-200 bg-red-50 p-5">
-          <h4 className="font-semibold text-red-800">Upload Failed</h4>
-          <p className="text-sm text-red-700 mt-1">{apiErrorMessage}</p>
+          <div className="flex items-start gap-3">
+            <div className="w-9 h-9 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+              <MdError className="text-red-600" size="1.3em" />
+            </div>
+            <div className="flex-1">
+              <h4 className="font-semibold text-red-800">Upload Failed</h4>
+              <p className="text-sm text-red-700 mt-1">{apiErrorMessage}</p>
+              {apiErrorList.length > 0 && (
+                <ul className="list-disc list-inside text-sm text-red-700 mt-2 space-y-0.5">
+                  {apiErrorList.map((err, idx) => (
+                    <li key={idx}>{err}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
         </div>
       )}
 
-      {uploadResult && (
-        <div className="mt-6 rounded-2xl border border-emerald-200 bg-white shadow-md p-6 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-             <MdCheckCircle className="text-emerald-600" size="2em" />
-             <div>
-                <h4 className="font-semibold text-gray-900">Upload Successful</h4>
-                <p className="text-xs text-gray-500">{uploadResult.message}</p>
-             </div>
+      {uploadResult && (() => {
+        const succeeded = (uploadResult.savedRecords || 0) + (uploadResult.mergedRecords || 0);
+        const hasRejects = (uploadResult.rejectedRecords || 0) > 0;
+        const allRejected = succeeded === 0 && (uploadResult.totalRecords || 0) > 0;
+        const headerCfg = allRejected
+          ? { card: 'border-amber-200', iconBg: 'bg-amber-100', iconColor: 'text-amber-600',
+              Icon: MdWarning, title: 'Upload Processed — No New Records Added',
+              subtitle: 'All rows already exist or were rejected. See the notes below.' }
+          : hasRejects
+            ? { card: 'border-emerald-200', iconBg: 'bg-emerald-100', iconColor: 'text-emerald-600',
+                Icon: MdCheckCircle, title: 'Upload Complete (with issues)',
+                subtitle: uploadResult.schemaValidationMessage || 'Some rows were saved; others were rejected or skipped.' }
+            : { card: 'border-emerald-200', iconBg: 'bg-emerald-100', iconColor: 'text-emerald-600',
+                Icon: MdCheckCircle, title: 'Upload Complete',
+                subtitle: uploadResult.schemaValidationMessage || 'Workbook processed successfully.' };
+        const H = headerCfg.Icon;
+        return (
+        <div className={`mt-6 rounded-2xl border ${headerCfg.card} bg-white shadow-md p-6`}>
+          <div className="flex items-center gap-3 mb-5">
+            <div className={`w-10 h-10 rounded-full ${headerCfg.iconBg} flex items-center justify-center`}>
+              <H className={headerCfg.iconColor} size="1.5em" />
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-900">{headerCfg.title}</h4>
+              <p className="text-xs text-gray-500">{headerCfg.subtitle}</p>
+            </div>
           </div>
-          <button onClick={onViewLogs} className="text-indigo-600 hover:underline text-sm font-medium">View Logs</button>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <StatCard
+              Icon={MdListAlt}
+              label="Total"
+              value={uploadResult.totalRecords}
+              color={{ bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-700' }}
+            />
+            <StatCard
+              Icon={MdAddCircleOutline}
+              label="New / Saved"
+              value={uploadResult.savedRecords}
+              color={{ bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-700' }}
+            />
+            <StatCard
+              Icon={MdSync}
+              label="Merged"
+              value={uploadResult.mergedRecords}
+              color={{ bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-700' }}
+            />
+            <StatCard
+              Icon={MdBlock}
+              label="Rejected"
+              value={uploadResult.rejectedRecords}
+              color={{ bg: 'bg-rose-50', border: 'border-rose-200', text: 'text-rose-700' }}
+            />
+          </div>
+
+          {uploadResult.errors && uploadResult.errors.length > 0 && (
+            <>
+              <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <MdWarning className="text-amber-600" size="1.1em" />
+                  <h5 className="text-sm font-semibold text-amber-800">
+                    {uploadResult.errors.length} note{uploadResult.errors.length > 1 ? 's' : ''}
+                  </h5>
+                </div>
+                <ul className="list-disc list-inside text-sm text-amber-900 space-y-0.5 max-h-48 overflow-y-auto">
+                  {uploadResult.errors.map((err, idx) => (
+                    <li key={idx}>{err}</li>
+                  ))}
+                </ul>
+              </div>
+
+              {onViewLogs && (
+                <div className="mt-3 flex justify-end">
+                  <button
+                    type="button"
+                    onClick={onViewLogs}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-800 hover:underline underline-offset-2 transition-colors"
+                  >
+                    <MdListAlt size="1.1em" />
+                    View full ingestion log
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
+              )}
+            </>
+          )}
         </div>
-      )}
+        );
+      })()}
+
       {showCatalogue && (
         <div className="mt-6 bg-white rounded-xl shadow-md p-6">
           <div className="flex items-center justify-between mb-4">
@@ -648,7 +828,7 @@ const AILearningUpload = ({ onViewLogs }) => {
           ) : (
             <div className="overflow-x-auto">
               {trackingList.length > 0 ? (
-                <TrackingPivotTable trackingData={trackingList} />
+                <TrackingPivotTable trackingData={trackingList} catalogue={catalogueList} />
               ) : (
                 <div className="text-center py-8 text-gray-500">No tracking data available</div>
               )}
@@ -660,38 +840,18 @@ const AILearningUpload = ({ onViewLogs }) => {
   );
 };
 
+
 // Tracking Pivot Table Component
-const TrackingPivotTable = ({ trackingData }) => {
-  // Group by candidate
-  const groupByCourse = {};
-  const candidateMap = {};
-  
-  trackingData.forEach((record) => {
-    const associateId = record.candidate?.associateId || 'N/A';
-    const candidateName = record.candidate?.candidateName || 'N/A';
-    const courseCode = record.catalogue?.courseCode || 'N/A';
-    const status = record.status || 'N/A';
+// The backend already groups by associate (one entry per associate id, with a `courses`
+// list) — this only lays that out as a grid. Columns come from the full catalogue (not
+// just courses a given associate happens to have a status for), so every associate row
+// shows the same set of course columns, matching the uploaded Excel layout.
+const TrackingPivotTable = ({ trackingData, catalogue }) => {
+  const courseCodes = catalogue && catalogue.length > 0
+    ? catalogue.map((c) => c.courseCode)
+    : Array.from(new Set(trackingData.flatMap((r) => (r.courses || []).map((c) => c.courseCode)))).sort();
 
-    // Store candidate info
-    if (!candidateMap[associateId]) {
-      candidateMap[associateId] = {
-        associateId,
-        candidateName,
-        courses: {}
-      };
-    }
-    candidateMap[associateId].courses[courseCode] = status;
-
-    // Collect unique courses
-    if (!groupByCourse[courseCode]) {
-      groupByCourse[courseCode] = true;
-    }
-  });
-
-  const courseCodes = Object.keys(groupByCourse).sort();
-  const candidates = Object.values(candidateMap).sort((a, b) => 
-    parseInt(a.associateId) - parseInt(b.associateId)
-  );
+  const rows = [...trackingData].sort((a, b) => (a.associateId || 0) - (b.associateId || 0));
 
   return (
     <table className="min-w-full divide-y divide-gray-200">
@@ -707,32 +867,38 @@ const TrackingPivotTable = ({ trackingData }) => {
         </tr>
       </thead>
       <tbody>
-        {candidates.map((candidate, idx) => (
-          <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-            <td className="px-4 py-2 text-sm font-semibold text-gray-900">{candidate.associateId}</td>
-            <td className="px-4 py-2 text-sm text-gray-900">{candidate.candidateName}</td>
-            {courseCodes.map((courseCode) => {
-              const status = candidate.courses[courseCode] || 'N/A';
-              return (
-                <td key={courseCode} className="px-4 py-2 text-sm text-center">
-                  <span className={`px-2 py-1 rounded text-xs font-medium ${
-                    status === 'Completed' 
-                      ? 'bg-emerald-100 text-emerald-700' 
-                      : status === 'Yet to Start'
-                      ? 'bg-yellow-100 text-yellow-700'
-                      : 'bg-gray-100 text-gray-700'
-                  }`}>
-                    {status}
-                  </span>
-                </td>
-              );
-            })}
-          </tr>
-        ))}
+        {rows.map((row, idx) => {
+          const statusByCode = {};
+          (row.courses || []).forEach((c) => { statusByCode[c.courseCode] = c.status; });
+          return (
+            <tr key={row.associateId ?? idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td className="px-4 py-2 text-sm font-semibold text-gray-900">{row.associateId}</td>
+              <td className="px-4 py-2 text-sm text-gray-900">{row.candidateName}</td>
+              {courseCodes.map((courseCode) => {
+                const status = statusByCode[courseCode] || 'Not Tracked';
+                return (
+                  <td key={courseCode} className="px-4 py-2 text-sm text-center">
+                    <span className={`px-2 py-1 rounded text-xs font-medium ${
+                      status === 'Completed'
+                        ? 'bg-emerald-100 text-emerald-700'
+                        : status === 'Yet to Start'
+                        ? 'bg-yellow-100 text-yellow-700'
+                        : 'bg-gray-100 text-gray-700'
+                    }`}>
+                      {status}
+                    </span>
+                  </td>
+                );
+              })}
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );
 };
+
+
 
 // Trainees List Component
 const TraineesList = ({ candidates, loading, onViewTalentCard, onDeleteCandidate, pagination, currentPage, onPageChange }) => {

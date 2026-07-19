@@ -62,6 +62,8 @@ public class User {
     @Builder.Default
     private boolean active = true;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToOne
     @JoinColumn(name = "associate_id", referencedColumnName = "associate_id")
     private Candidate candidate;
