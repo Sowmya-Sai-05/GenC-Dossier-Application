@@ -1,7 +1,0 @@
-
-# Logs
-logs/
-*.log
-
-# Maven/Java build output
-target/
