@@ -1,2 +1,7 @@
-logs
-target
+
+# Logs
+logs/
+*.log
+
+# Maven/Java build output
+target/
