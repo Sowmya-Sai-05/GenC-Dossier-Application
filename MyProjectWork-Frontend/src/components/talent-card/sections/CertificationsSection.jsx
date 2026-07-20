@@ -15,10 +15,10 @@ const CertificationsSection = ({ title, items }) => (
         <FcDiploma1 size="2em" />{title}
       </h3>
 
-      <span className="flex items-center gap-1 text-blue-600 hover:underline cursor-pointer">
+      {/* <span className="flex items-center gap-1 text-blue-600 hover:underline cursor-pointer">
         View All Certificates
         <IoArrowForward size="1.25em" />
-      </span>
+      </span> */}
     </div>
 
     <div className="border-t border-gray-300 mb-4" />
