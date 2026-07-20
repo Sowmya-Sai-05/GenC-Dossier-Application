@@ -1,23 +1,36 @@
 package com.cts.service;
 
 import com.cts.entity.AIFluencyStatus;
-import com.cts.repository.AIFluencyStatusRepository;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Helper for committing one AIFluencyStatus at a time inside its own transaction.
+ * Commits one AIFluencyStatus (one associate's full course list) at a time, in its own
+ * transaction, so one bad row can't roll back previously-saved rows in the same upload.
+ *
+ * Uses EntityManager.persist()/merge() explicitly instead of JpaRepository.save(): since
+ * associateId is a manually-assigned (non-generated) id that's always non-null — even for a
+ * brand-new row — Spring Data's default isNew() check (id == null?) misreads every new row as
+ * "existing" and routes it through merge(). Combined with the EAGER, cascade-ALL/orphanRemoval
+ * `courses` collection, that produced "org.hibernate.AssertionFailure: null identifier". The
+ * caller already knows whether the row is new (it just looked it up), so that's passed in
+ * directly rather than re-derived from the id.
  */
 @Service
-@RequiredArgsConstructor
 public class AIFluencyBatchHelper {
 
-    private final AIFluencyStatusRepository statusRepository;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public AIFluencyStatus saveOne(AIFluencyStatus status) {
-        return statusRepository.save(status);
+    public AIFluencyStatus saveOne(AIFluencyStatus status, boolean isNew) {
+        if (isNew) {
+            entityManager.persist(status);
+            return status;
+        }
+        return entityManager.merge(status);
     }
 }

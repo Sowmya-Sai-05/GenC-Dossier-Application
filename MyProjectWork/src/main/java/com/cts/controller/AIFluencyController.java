@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Collections;
 import java.util.List;
 import com.cts.entity.AILearningCatalogue;
-import com.cts.entity.AIFluencyStatus;
+import com.cts.dto.AIFluencyTrackingDto;
 
 @RestController
 @RequestMapping("/admin/ai-fluency")
@@ -27,32 +27,27 @@ public class AIFluencyController {
     private final AIFluencyService fluencyService;
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/catalogue")
-    @Operation(summary = "Upload AI Learning Catalogue", description = "Uploads the catalogue mapping course codes to skills/certifications.")
-    public ResponseEntity<ApiResponse<String>> uploadCatalogue(@RequestParam("file") MultipartFile file) {
-        logger.info("Received request to upload AI Learning Catalogue");
+    @PostMapping(value = "/upload", consumes = "multipart/form-data")
+    @Operation(summary = "Upload AI Fluency workbook",
+            description = "Single .xlsx containing a Master Data (catalogue) sheet and a completion-tracking sheet. " +
+                    "Catalogue rows are upserted first; tracking statuses are then applied only for course codes " +
+                    "that exist in the catalogue. Returns counts (total/saved/merged/rejected) plus per-row notes.")
+    public ResponseEntity<?> uploadAIFluency(@RequestParam("file") MultipartFile file) {
+        logger.info("Received AI Fluency upload request: {}, size={} bytes", file.getOriginalFilename(), file.getSize());
         try {
-            fluencyService.processCatalogue(file);
-            return ResponseEntity.ok(new ApiResponse<>(true, "Catalogue processed. Check Ingestion Logs for details.", ""));
-        } catch (Exception e) {
-            logger.error("Error processing catalogue", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ApiResponse<>(false, "Failed to process catalogue: " + e.getMessage(), ""));
-        }
-    }
+            var auth = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+            String uploadedBy = (auth != null && auth.isAuthenticated()) ? auth.getName() : null;
 
-    @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/tracking")
-    @Operation(summary = "Upload AI Tracking Sheet", description = "Uploads the trainee tracking sheet with dynamic course columns.")
-    public ResponseEntity<ApiResponse<String>> uploadTracking(@RequestParam("file") MultipartFile file) {
-        logger.info("Received request to upload AI Tracking Sheet");
-        try {
-            fluencyService.processTracking(file);
-            return ResponseEntity.ok(new ApiResponse<>(true, "Tracking processed. Check Ingestion Logs for details.", ""));
+            AIFluencyService.FluencyUploadResult result = fluencyService.processExcel(file, uploadedBy);
+
+            if (result.getTotalRecords() == 0) {
+                logger.warn("AI Fluency upload failed for file: {}", file.getOriginalFilename());
+                return ResponseEntity.badRequest().body(result);
+            }
+            return ResponseEntity.ok(result);
         } catch (Exception e) {
-            logger.error("Error processing tracking sheet", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ApiResponse<>(false, "Failed to process tracking: " + e.getMessage(), ""));
+            logger.error("Error processing AI Fluency workbook", e);
+            return ResponseEntity.internalServerError().body("Error processing file: " + e.getMessage());
         }
     }
 
@@ -72,10 +67,10 @@ public class AIFluencyController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/tracking")
-    @Operation(summary = "List AI Tracking Status", description = "Returns all tracking statuses for all trainees")
-    public ResponseEntity<ApiResponse<List<AIFluencyStatus>>> listTracking() {
+    @Operation(summary = "List AI Tracking Status", description = "Returns one entry per associate with their full list of course completions")
+    public ResponseEntity<ApiResponse<List<AIFluencyTrackingDto>>> listTracking() {
         try {
-            List<AIFluencyStatus> list = fluencyService.getAllTrackingStatuses();
+            List<AIFluencyTrackingDto> list = fluencyService.getAllTrackingStatuses();
             return ResponseEntity.ok(new ApiResponse<>(true, "Tracking fetched", list));
         } catch (Exception e) {
             logger.error("Error fetching tracking", e);

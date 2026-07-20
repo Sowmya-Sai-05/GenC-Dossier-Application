@@ -63,8 +63,10 @@ export const uploadExcel = createAsyncThunk(
   }
 );
 
-export const uploadAICatalogue = createAsyncThunk(
-  'admin/uploadAICatalogue',
+// Single combined upload: one workbook with a Master Data (catalogue) sheet and a
+// completion-tracking sheet, processed together by the backend in one pass.
+export const uploadAIFluency = createAsyncThunk(
+  'admin/uploadAIFluency',
   async (file, { dispatch, rejectWithValue }) => {
     try {
       dispatch(setUploadPhase('uploading'));
@@ -73,38 +75,7 @@ export const uploadAICatalogue = createAsyncThunk(
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await axios.post(`${API_BASE_URL}/admin/ai-fluency/catalogue`, formData, {
-        headers: {
-          ...getAuthHeaders(),
-          'Content-Type': 'multipart/form-data',
-        },
-        onUploadProgress: (e) => {
-          if (!e.total) return;
-          const pct = Math.min(100, Math.round((e.loaded * 100) / e.total));
-          dispatch(setUploadProgress(pct));
-          if (pct >= 100) dispatch(setUploadPhase('processing'));
-        },
-      });
-      dispatch(setUploadPhase('done'));
-      return response.data;
-    } catch (error) {
-      dispatch(setUploadPhase('idle'));
-      return rejectWithValue(parseApiError(error.response?.data));
-    }
-  }
-);
-
-export const uploadAITracking = createAsyncThunk(
-  'admin/uploadAITracking',
-  async (file, { dispatch, rejectWithValue }) => {
-    try {
-      dispatch(setUploadPhase('uploading'));
-      dispatch(setUploadProgress(0));
-
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const response = await axios.post(`${API_BASE_URL}/admin/ai-fluency/tracking`, formData, {
+      const response = await axios.post(`${API_BASE_URL}/admin/ai-fluency/upload`, formData, {
         headers: {
           ...getAuthHeaders(),
           'Content-Type': 'multipart/form-data',
@@ -388,29 +359,16 @@ const adminSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(uploadAICatalogue.pending, (state) => {
+      .addCase(uploadAIFluency.pending, (state) => {
         state.loading = true;
         state.error = null;
         state.uploadResult = null;
       })
-      .addCase(uploadAICatalogue.fulfilled, (state, action) => {
+      .addCase(uploadAIFluency.fulfilled, (state, action) => {
         state.loading = false;
         state.uploadResult = action.payload;
       })
-      .addCase(uploadAICatalogue.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-      .addCase(uploadAITracking.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.uploadResult = null;
-      })
-      .addCase(uploadAITracking.fulfilled, (state, action) => {
-        state.loading = false;
-        state.uploadResult = action.payload;
-      })
-      .addCase(uploadAITracking.rejected, (state, action) => {
+      .addCase(uploadAIFluency.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })

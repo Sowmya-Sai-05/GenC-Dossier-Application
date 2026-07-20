@@ -1,14 +1,24 @@
 package com.cts.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Entity tracking the completion status of a specific candidate for an AI learning catalogue item.
+ * One row per candidate — the list of course completions lives on {@link #courses}.
+ * associateId is a plain assigned primary key (always set explicitly by the service
+ * before saving); {@code candidate} is a read-only shadow mapping onto that same
+ * column purely for convenient lookups, so no identity is ever derived from it —
+ * deriving via @MapsId broke when the batch helper saved a detached Candidate
+ * reference in its own REQUIRES_NEW transaction (Hibernate couldn't resolve the
+ * associated entity's identity and inserted a null primary key).
  */
 @Entity
 @Table(name = "ai_fluency_status")
@@ -19,18 +29,18 @@ import lombok.NoArgsConstructor;
 public class AIFluencyStatus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "associate_id")
+    private Integer associateId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "associate_id", nullable = false)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "associate_id", insertable = false, updatable = false)
     private Candidate candidate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "course_code", nullable = false)
-    private AILearningCatalogue catalogue;
-
-    @NotNull(message = "Status should not be empty")
-    @Column(name = "status", length = 50, nullable = false)
-    private String status; // "Completed" or "Yet to Start"
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @Builder.Default
+    @OneToMany(mappedBy = "fluencyStatus", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<AIFluencyCourseStatus> courses = new ArrayList<>();
 }

@@ -8,7 +8,7 @@ import com.cts.dto.ProjectDto;
 import com.cts.dto.SkillsDto;
 import com.cts.dto.AIFluencyDto;
 import com.cts.dto.AIFluencyStatusDto;
-import com.cts.entity.AIFluencyStatus;
+import com.cts.entity.AIFluencyCourseStatus;
 import com.cts.entity.Achievement;
 import com.cts.entity.Candidate;
 import com.cts.entity.Certification;
@@ -104,18 +104,18 @@ public class CandidateRowMapper {
             candidateDto.setCandidateScore(null);
         }
 
-        if (candidate.getAiFluencyStatuses() != null) {
+        if (candidate.getAiFluencyStatus() != null) {
             List<AIFluencyStatusDto> aiSkills = new ArrayList<>();
             List<AIFluencyStatusDto> aiCertifications = new ArrayList<>();
-            for (AIFluencyStatus status : candidate.getAiFluencyStatuses()) {
+            for (AIFluencyCourseStatus courseStatus : candidate.getAiFluencyStatus().getCourses()) {
                 AIFluencyStatusDto dto = new AIFluencyStatusDto();
-                dto.setId(status.getId());
-                dto.setCourseCode(status.getCatalogue().getCourseCode());
-                dto.setCourseName(status.getCatalogue().getCourseName());
-                dto.setType(status.getCatalogue().getType());
-                dto.setStatus(status.getStatus());
+                dto.setId(courseStatus.getId());
+                dto.setCourseCode(courseStatus.getCatalogue().getCourseCode());
+                dto.setCourseName(courseStatus.getCatalogue().getCourseName());
+                dto.setType(courseStatus.getCatalogue().getType());
+                dto.setStatus(courseStatus.getStatus());
 
-                if ("Certification".equalsIgnoreCase(status.getCatalogue().getType())) {
+                if ("Certification".equalsIgnoreCase(courseStatus.getCatalogue().getType())) {
                     aiCertifications.add(dto);
                 } else {
                     aiSkills.add(dto);
