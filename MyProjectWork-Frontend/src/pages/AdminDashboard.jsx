@@ -1469,7 +1469,7 @@ const IngestionLogs = () => {
           <p>No upload attempts yet.</p>
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+        <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>

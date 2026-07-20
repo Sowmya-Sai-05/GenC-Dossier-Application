@@ -86,10 +86,11 @@ const SkillsSection = ({ skills }) => (
         Skills
       </h3>
 
-      <span className="flex items-center gap-1 text-blue-600 hover:underline cursor-pointer">
+      {/* <span className="flex items-center gap-1 text-blue-600 hover:underline cursor-pointer">
         View All Skills
         <IoArrowForward size="1.25em" />
-      </span>
+      </span> */}
+      
     </div>
 
     <div className="border-t border-gray-300 mb-4" />

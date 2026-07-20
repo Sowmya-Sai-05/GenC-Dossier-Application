@@ -19,7 +19,7 @@ const AIFluencySection = ({ aiFluency }) => {
 
       <div className="space-y-8">
         {/* AI Skills Subsection */}
-        {aiSkills && aiSkills.length > 0 && (
+        {/* {aiSkills && aiSkills.length > 0 && (
           <div>
             <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4 border-b border-gray-100 pb-2">
               AI Skills
@@ -43,7 +43,43 @@ const AIFluencySection = ({ aiFluency }) => {
               })}
             </div>
           </div>
+        )} */}
+
+        <div className="space-y-8">
+        {/* AI Skills Subsection */}
+        {aiSkills?.filter((skill) => skill.status === "Completed").length > 0 && (
+          <div>
+            <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4 border-b border-gray-100 pb-2">
+              AI Skills
+            </h4>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {aiSkills
+                .filter((skill) => skill.status === "Completed")
+                .map((skill) => (
+                  <div
+                    key={skill.id}
+                    className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50/50"
+                  >
+                    <MdCheckCircle
+                      className="text-emerald-500 shrink-0"
+                      size="1.4em"
+                    />
+
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900 line-clamp-2">
+                        {skill.courseName}
+                      </p>
+                      <p className="text-xs text-gray-500 font-mono mt-0.5">
+                        {skill.courseCode}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
         )}
+      </div>
 
         {/* AI Certifications Subsection */}
         {aiCertifications && aiCertifications.length > 0 && (
