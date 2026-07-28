@@ -221,8 +221,11 @@ public class AIFluencyService {
                     catalogueRepository.save(entry);
                     result.setMergedRecords(result.getMergedRecords() + 1);
                 } else {
-                    // Exact match against DB — already up to date, counted as a rejected duplicate.
-                    result.setRejectedRecords(result.getRejectedRecords() + 1);
+                    // Already in the catalogue with identical type/skills — not a failure, just a
+                    // no-op re-upload of a course we already have. Counted as merged (not rejected)
+                    // so a routine re-upload of the same Master Data sheet doesn't read as an error.
+                    result.getErrors().add("Master Data row " + (i + 1) + ": course code " + courseCode + " already exists in the catalogue — no changes");
+                    result.setMergedRecords(result.getMergedRecords() + 1);
                 }
             } else {
                 catalogueRepository.save(new AILearningCatalogue(courseCode, type, skills));
