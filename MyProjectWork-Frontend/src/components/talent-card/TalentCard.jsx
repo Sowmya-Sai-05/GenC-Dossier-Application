@@ -1,0 +1,347 @@
+import React, { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+
+import AchievementsSection from './sections/AchievementsSection';
+import CertificationsSection from './sections/CertificationsSection';
+import ProjectsSection from './sections/ProjectsSection';
+import SkillsSection from './sections/SkillsSection';
+import AIFluencySection from './sections/AIFluencySection';
+import StatCard from './performance_stats/StatCard';
+import AttendanceScore from './performance_stats/AttendanceScore';
+import LanguageScore from './performance_stats/LanguageScore';
+
+import { FcDoughnutChart } from 'react-icons/fc';
+import {
+  MdAccessTime, MdAssessment, MdDoneAll, MdEmail, MdFeedback, MdOutlineFileDownload, MdVerified,
+  MdPhotoCamera, MdArrowBack,
+} from 'react-icons/md';
+import { FaLocationDot } from 'react-icons/fa6';
+import { ImUser, ImUsers } from 'react-icons/im';
+import { FaCalendarAlt, FaCode } from 'react-icons/fa';
+import { PHOTO_BASE_URL } from '../../config';
+
+// Unified status palette — handles RAG values (GREEN/AMBER/RED) AND Readiness (Ready/Not Ready)
+const getStatusConfig = (raw) => {
+  const status = (raw || '').toString().trim().toUpperCase();
+  switch (status) {
+    case 'GREEN':
+      return { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-700', dot: 'bg-green-500', label: 'On Track', display: 'GREEN' };
+    case 'READY':
+      return { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-700', dot: 'bg-green-500', label: 'Cleared for Deployment', display: 'Ready' };
+    case 'AMBER':
+      return { bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-700', dot: 'bg-amber-500', label: 'Needs Attention', display: 'AMBER' };
+    case 'NOT READY':
+      return { bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-700', dot: 'bg-amber-500', label: 'Pending Readiness', display: 'Not Ready' };
+    case 'RED':
+      return { bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-700', dot: 'bg-red-500', label: 'At Risk', display: 'RED' };
+    default:
+      return { bg: 'bg-gray-50', border: 'border-gray-200', text: 'text-gray-500', dot: 'bg-gray-400', label: 'Not Assessed', display: 'N/A' };
+  }
+};
+
+const StatusCard = ({ Icon, title, value, className = '' }) => {
+  const cfg = getStatusConfig(value);
+  return (
+    <div className={`border ${cfg.border} ${cfg.bg} rounded-xl p-4 flex flex-col justify-center ${className}`}>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-gray-500">
+          <Icon size="1em" className={cfg.text} /> {title}
+        </div>
+        <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full text-white ${cfg.dot}`}>
+          {cfg.display}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+/**
+ * Unified Talent Card — used in Admin, Leader, and Trainee panels.
+ *
+ * Role-driven behavior:
+ *  - `trainee`: shows the profile-photo upload button.
+ *  - `admin` / `leader`: read-only, no photo upload affordance.
+ *
+ * Pure presentational: parent owns data fetching and passes `candidate`.
+ */
+const TalentCard = ({ role, associateId, candidate, loading, error, onBack }) => {
+  const pdfRef = useRef(null);
+  const fileInputRef = useRef(null);
+
+  const canUploadPhoto = role === 'trainee';
+
+  const handleDownloadPDF = useReactToPrint({
+    contentRef: pdfRef,
+    documentTitle: candidate ? `${associateId}_Talent_Card` : 'Talent_Card',
+    removeAfterPrint: true,
+  });
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const formData = new FormData();
+    formData.append('file', file);
+    await fetch(`${PHOTO_BASE_URL}/${associateId}`, {
+      method: 'POST',
+      body: formData,
+    });
+    // Bust the browser cache for the newly uploaded photo
+    const img = document.getElementById(`profile-photo-${associateId}`);
+    if (img) img.src = `${PHOTO_BASE_URL}/${associateId}?t=${Date.now()}`;
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin h-12 w-12 border-b-2 border-indigo-600 rounded-full" />
+      </div>
+    );
+  }
+
+  if (error || !candidate) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="bg-white p-6 rounded-lg shadow">
+          <p className="text-red-600 mb-4">{error || 'No data found'}</p>
+          {onBack && (
+            <button onClick={onBack} className="bg-indigo-600 text-white px-4 py-2 rounded">
+              Back
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  const {
+    candidateName,
+    cognizantEmailID,
+    sl,
+    gender,
+    deploymentLocation,
+    cohortCode,
+    certificates = [],
+    achievement = [],
+    projects = [],
+    skills = {},
+    candidateScore = {},
+    aiFluency,
+  } = candidate;
+
+  return (
+    <div ref={pdfRef} className="print-container min-h-screen bg-blue-50 px-6 py-8 max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-4">
+          {onBack && (
+            <button
+              type="button"
+              onClick={onBack}
+              className="no-print inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-indigo-700 bg-white hover:bg-indigo-50 border border-gray-300 hover:border-indigo-300 px-3 py-2 rounded-md shadow-sm transition-colors"
+              aria-label="Back"
+              title="Back"
+            >
+              <MdArrowBack size="1.1em" /> Back
+            </button>
+          )}
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">
+              Trainee Talent Card
+            </h1>
+            <p className="text-sm text-gray-500">
+              Comprehensive overview of trainee profile and performance
+            </p>
+          </div>
+        </div>
+        <button
+          onClick={handleDownloadPDF}
+          className="no-print font-medium flex items-center gap-1 bg-white border border-gray-300 px-2 py-1 cursor-pointer rounded shadow-sm text-sm"
+        >
+          <MdOutlineFileDownload color="blue" size="2em" /> Download PDF
+        </button>
+      </div>
+
+      {/* Profile Card */}
+      <div className="bg-white rounded-xl shadow p-6 flex gap-6 mb-8">
+        <div className="relative group w-32 h-39 shrink-0">
+          <img
+            id={`profile-photo-${associateId}`}
+            src={`${PHOTO_BASE_URL}/${associateId}`}
+            alt="profile"
+            className="w-32 h-39 rounded-xl object-cover"
+            onError={(e) => {
+              e.currentTarget.src = '/profile_photos/profile1.avif';
+            }}
+          />
+          {canUploadPhoto && (
+            <>
+              {/* Hover-to-change overlay covering the whole photo */}
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className="no-print absolute inset-0 rounded-xl bg-black/0 group-hover:bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 cursor-pointer"
+                aria-label="Change profile photo"
+              >
+                <div className="flex flex-col items-center gap-1 text-white">
+                  <MdPhotoCamera size={28} />
+                  <span className="text-xs font-semibold tracking-wide">Change Photo</span>
+                </div>
+              </button>
+
+              {/* Always-visible camera badge — clearly signals uploadability */}
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className="no-print absolute -bottom-2 -right-2 bg-indigo-600 text-white w-10 h-10 rounded-full shadow-lg ring-4 ring-white hover:bg-indigo-700 hover:scale-110 active:scale-95 transition-all duration-150 flex items-center justify-center"
+                aria-label="Upload profile photo"
+                title="Upload / change profile photo"
+              >
+                <MdPhotoCamera size={20} />
+              </button>
+
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleImageUpload}
+              />
+            </>
+          )}
+        </div>
+
+        <div className="flex-1">
+          <h2 className="text-2xl font-semibold flex items-center gap-3">
+            {candidateName}
+          </h2>
+          <p className="text-gray-600 mt-2">{sl || 'Not specified'}</p>
+          <div className="grid grid-cols-2 gap-y-4 gap-x-6 mt-6 text-sm border-t border-gray-500 pt-4">
+            <p className="flex items-center gap-1"><MdEmail size="1.25em" color="blue" /> {cognizantEmailID}</p>
+            <p className="flex items-center gap-1"><FaLocationDot size="1.25em" color="blue" /> Location: {deploymentLocation}</p>
+            <p className="flex items-center gap-1"><ImUser size="1.25em" color="blue" /> Gender: {gender}</p>
+            <p className="flex items-center gap-1"><ImUsers size="1.25em" color="blue" /> Cohort: {cohortCode}</p>
+            <p className="flex items-center gap-1"><FaCode size="1.25em" color="blue" /> Service Line: {sl || 'Not specified'}</p>
+            <p className="flex items-center gap-1"><FaCalendarAlt size="1.25em" color="blue" /> Training Since: {candidate.doj || 'Not specified'}</p>
+          </div>
+        </div>
+
+        {/* KPIs */}
+        <div className="grid grid-cols-2 gap-4 w-80">
+          <StatCard label="Attendance Score" value={`${candidateScore.attendanceScore || 0}%`} />
+          <StatCard label="Projects" value={projects.length} />
+          <StatCard label="Certifications" value={certificates.length} />
+          <StatCard label="Achievements" value={achievement.length} />
+        </div>
+      </div>
+
+      {/* AI Fluency */}
+      <AIFluencySection aiFluency={aiFluency} />
+
+      {/* Skills & Projects */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 mt-8">
+        <SkillsSection skills={skills || []} />
+        <ProjectsSection projects={projects} />
+      </div>
+
+      {/* Certifications & Achievements */}
+      <div className="page-break grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <CertificationsSection title="Certifications" items={certificates} icon="✅" />
+        <AchievementsSection title="Achievements" items={achievement} icon="🏆" />
+      </div>
+
+      {/* Performance Overview */}
+      <div className="bg-white rounded-xl shadow p-6 mb-8">
+        <h3 className="flex items-center gap-2 font-semibold mb-4">
+          <FcDoughnutChart size="2em" />
+          Performance Overview
+        </h3>
+
+        <div className="border-t border-gray-300 mb-8"></div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:items-stretch">
+          {/* 1️⃣ RAG Score & Readiness */}
+          <div className="flex flex-col gap-3 h-full">
+            <h2 className="font-semibold flex items-center gap-2 text-gray-700">
+              <MdAssessment className="text-rose-500" size="1.3em" />
+              RAG Score & Readiness
+            </h2>
+
+            {/* Cards share the remaining height equally for a balanced column */}
+            <div className="flex flex-col gap-3 flex-1">
+              <StatusCard
+                Icon={MdAccessTime}
+                title="Interim Assessment"
+                value={candidateScore.interimScore}
+                className="flex-1"
+              />
+
+              <StatusCard
+                Icon={MdDoneAll}
+                title="Final Assessment"
+                value={candidateScore.finalScore}
+                className="flex-1"
+              />
+
+              <StatusCard
+                Icon={MdVerified}
+                title="Readiness"
+                value={candidateScore.readiness}
+                className="flex-1"
+              />
+            </div>
+          </div>
+
+          {/* 2️⃣ Evaluation Feedback */}
+          <div className="flex flex-col gap-3 h-full">
+            <h2 className="font-semibold flex items-center gap-2 text-gray-700">
+              <MdFeedback className="text-blue-500" size="1.3em" />
+              Evaluation Feedback
+            </h2>
+
+            {/* Interim feedback block commented out per project decision
+            <div className="border border-sky-200 bg-sky-50 rounded-xl p-4 flex-1">
+              <div className="flex items-center gap-1.5 mb-2">
+                <MdAccessTime className="text-sky-500" size="1.1em" />
+                <span className="text-xs font-semibold uppercase tracking-wide text-sky-600 bg-sky-100 px-2 py-0.5 rounded-full">
+                  Interim
+                </span>
+              </div>
+              <p className="text-sm text-gray-600 leading-relaxed line-clamp-4">
+                {candidateScore.interimEvaluationFeedback || 'No interim feedback available.'}
+              </p>
+            </div>
+            */}
+
+            <div className="border border-indigo-200 bg-indigo-50 rounded-xl p-4 flex-1">
+              <div className="flex items-center gap-1.5 mb-2">
+                <MdDoneAll className="text-indigo-500" size="1.1em" />
+                <span className="text-xs font-semibold uppercase tracking-wide text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded-full">
+                  Final
+                </span>
+              </div>
+              <p className="text-sm text-gray-600 leading-relaxed line-clamp-4">
+                {candidateScore.finalEvaluationFeedback || 'No final evaluation feedback available.'}
+              </p>
+            </div>
+          </div>
+
+          {/* 3️⃣ Attendance Score + Language Score */}
+          <div className="flex flex-col gap-3 h-full">
+            <AttendanceScore
+              attendanceScore={candidateScore.attendanceScore}
+              className="flex-1"
+            />
+            <LanguageScore languageScore={candidateScore.languageScore} />
+          </div>
+        </div>
+      </div>
+
+      {/* Quote */}
+      <div className="bg-white rounded-xl shadow p-6 text-gray-600 italic">
+        "Passionate learner with strong problem-solving skills and a drive to build impactful solutions."
+      </div>
+    </div>
+  );
+};
+
+export default TalentCard;
