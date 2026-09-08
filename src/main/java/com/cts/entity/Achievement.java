@@ -15,6 +15,7 @@ public class Achievement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("aId")
     private Integer aId;
 
     @NotNull(message = "Type should not be empty (ACHIEVEMENT or ACTIVITY)")
