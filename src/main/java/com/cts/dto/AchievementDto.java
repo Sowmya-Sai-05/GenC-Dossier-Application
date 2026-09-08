@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AchievementDto {
+    @JsonProperty("aId")
     private Integer aId;
 
     private String type; // "ACHIEVEMENT" or "ACTIVITY"
